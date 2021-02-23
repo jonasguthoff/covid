@@ -20,6 +20,7 @@
 	global DataOurWorld_ECDC  "$DataOurWorld/ecdc"
 	global DataOurWorld_JHU   "$DataOurWorld/jhu"
 	global DataOurWorld_Vacc  "$DataOurWorld/vaccinations"
+	global DataHarvard        "$Data/HarvardDataverse"
 
 	global FinalData          "$Data/FinalData"
 
