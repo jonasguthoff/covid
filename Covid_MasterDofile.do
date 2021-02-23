@@ -15,8 +15,10 @@
 	* Set globals for filepaths
 
 	global Data               "$github/Data"
+	global ProcessedData      "$Data/ProcessedData"
 	global DataOurWorld       "$github/Data/OurWorldinData"
 	global DataOurWorld_ECDC  "$DataOurWorld/ecdc"
+	global DataOurWorld_JHU   "$DataOurWorld/jhu"
 	global DataOurWorld_Vacc  "$DataOurWorld/vaccinations"
 
 
