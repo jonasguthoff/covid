@@ -1,0 +1,23 @@
+location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
+Morocco,2021-01-28,"Oxford/AstraZeneca, Sinopharm/Beijing",https://2m.ma/fr/news/marocvaccination-anti-covid-19-90000-personnes-vaccinees-en-3-jours-20210131/,0,,
+Morocco,2021-01-30,"Oxford/AstraZeneca, Sinopharm/Beijing",https://2m.ma/fr/news/marocvaccination-anti-covid-19-90000-personnes-vaccinees-en-3-jours-20210131/,90000,,
+Morocco,2021-01-31,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.mapexpress.ma/actualite/societe-et-regions/covid-19-126-000-personnes-ete-vaccinees-au-maroc-ministere/,126000,,
+Morocco,2021-02-01,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/1.2.21.COVID-19.pdf,200081,,
+Morocco,2021-02-02,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/2.2.21.COVID-19.pdf,257291,,
+Morocco,2021-02-03,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/3.2.21.COVID-19.pdf,308398,,
+Morocco,2021-02-04,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/4.2.21.COVID-19.pdf,351723,,
+Morocco,2021-02-05,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/5.2.21.COVID-19.pdf,408235,,
+Morocco,2021-02-06,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/6.2.21.COVID-19.pdf,463966,,
+Morocco,2021-02-08,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/8.2.21.COVID-19.pdf,550149,,
+Morocco,2021-02-09,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/9.2.21.COVID-19.pdf,615181,,
+Morocco,2021-02-10,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/10.2.21.COVID-19.pdf,746116,,
+Morocco,2021-02-11,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/11.2.21.COVID-19.pdf,855318,,
+Morocco,2021-02-12,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/12.2.21.COVID-19.pdf,1112103,,
+Morocco,2021-02-13,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/13.2.21.COVID-19.pdf,1388539,,
+Morocco,2021-02-15,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/15.2.21.COVID-19.pdf,1707091,,
+Morocco,2021-02-16,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/16.2.21.COVID-19.pdf,1904169,,
+Morocco,2021-02-17,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/17.2.21.COVID-19.pdf,2081013,,
+Morocco,2021-02-18,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/18.2.21.COVID-19.pdf,2233123,,
+Morocco,2021-02-19,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/19.2.21.COVID-19.pdf,2362150,2357283,4867
+Morocco,2021-02-20,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/20.2.21.COVID-19.pdf,2461192,2447716,13476
+Morocco,2021-02-22,"Oxford/AstraZeneca, Sinopharm/Beijing",http://www.covidmaroc.ma/Documents/BULLETIN/22.2.21.COVID-19.pdf,2575684,2552017,23667

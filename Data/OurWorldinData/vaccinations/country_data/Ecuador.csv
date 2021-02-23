@@ -1,0 +1,6 @@
+location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
+Ecuador,2021-01-21,Pfizer/BioNTech,https://github.com/andrab/ecuacovid,0,0,0
+Ecuador,2021-01-22,Pfizer/BioNTech,https://github.com/andrab/ecuacovid,108,108,0
+Ecuador,2021-01-27,Pfizer/BioNTech,https://github.com/andrab/ecuacovid,2982,2982,0
+Ecuador,2021-02-04,Pfizer/BioNTech,https://github.com/andrab/ecuacovid,6228,6228,0
+Ecuador,2021-02-17,Pfizer/BioNTech,https://github.com/andrab/ecuacovid,8190,6228,1962
