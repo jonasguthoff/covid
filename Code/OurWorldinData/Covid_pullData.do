@@ -30,10 +30,6 @@
 
 
 
-  save "${ProcessedData}/DailyCases_US_UK.dta", replace
-save "${ProcessedData}/Vaccinations_UK.dta", replace
-  save "${ProcessedData}/Vaccinations_US.dta", replace
-
 
 
 ********************************************************************************

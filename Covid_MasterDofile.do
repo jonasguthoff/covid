@@ -21,6 +21,7 @@
 	global DataOurWorld_JHU   "$DataOurWorld/jhu"
 	global DataOurWorld_Vacc  "$DataOurWorld/vaccinations"
 
+	global FinalData          "$Data/FinalData"
 
 
 

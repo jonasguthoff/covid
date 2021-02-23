@@ -39,13 +39,23 @@
   replace first_dose  = total_vaccinations - second_dose
   format  first_dose %12.0g
 
+  * generate days since approval of the first vaccine:
+  gen     apprvl_vaccine = td(11dec2020)
+  format  apprvl_vaccine %td
 
-  local  KeepVars = "location date date_td first_dose second_dose"
+  gen     days_apprvl    = date_td - apprvl_vaccine
+
+
+  local  KeepVars = "location date date_td first_dose second_dose apprvl_vaccine days_apprvl"
   order `KeepVars'
   keep  `KeepVars'
 
 
   save  "${ProcessedData}/Vaccinations_US_constructed.dta", replace
+
+
+
+
 
 
   *** Merge the two data sets
@@ -55,12 +65,38 @@
   merge 1:1 date_td using  "${ProcessedData}/Vaccinations_US_constructed.dta", gen(MergeVaccines)
 
 
-  * add number of weeks since vaccines were approvaed:
+
+  * Date
+  * Number of weeks since vaccine approved in the country
+  * Number of 1st doses given in that day
+  * Number of 2nd doses given in that day
+  * Number of confirmed cases on that day
+  * Number of confirmed deaths on that day
+
+  rename  location country
+  rename  date     date_str
+
+  lab var country         "Country"
+  lab var date_td         "Date"
+  lab var new_cases       "Daily new cases"
+  lab var new_deaths      "Daily new deaths"
+  lab var first_dose      "Number of 1st doses"
+  lab var second_dose     "Number of 1st doses"
+  lab var apprvl_vaccine  "Approval of 1st vaccine"
+  lab var days_apprvl     "Days since approval of first vaccine"
+
+  * Then R values added
 
 
+  * keep only those variables that are needed:
+  local  VarList = "country date_td new_cases new_deaths first_dose second_dose apprvl_vaccine days_apprvl"
+  order `VarList'
+  keep  `VarList'
 
 
-  save  "${ProcessedData}/CovidCasesVaccines_US_constructed.dta", replace
+  save  "${FinalData}/CovidData_US_final.dta", replace
+  export delimited "${FinalData}/CovidData_US_final.csv", replace
+
 
 
 
@@ -100,8 +136,14 @@
   replace first_dose  = total_vaccinations - second_dose
   format  first_dose %12.0g
 
+  * generate days since approval of the first vaccine:
+  gen     apprvl_vaccine = td(02dec2020)
+  format  apprvl_vaccine %td
 
-  local   KeepVars = "location date date_td first_dose second_dose"
+  gen     days_apprvl    = date_td - apprvl_vaccine
+
+
+  local   KeepVars = "location date date_td first_dose second_dose apprvl_vaccine days_apprvl"
   order  `KeepVars'
   keep   `KeepVars'
 
@@ -110,28 +152,44 @@
 
 
 
-  ******************************************************************************
-  * Pull data sets again and label, clean them:
 
-* Date
-* Number of weeks since vaccine approved in the country
-* Number of 1st doses given in that day
-* Number of 2nd doses given in that day
-* Number of confirmed cases on that day
-* Number of confirmed deaths on that day
+  *** Merge the two data sets
 
-* Then R values added
+  use "${ProcessedData}/DailyCasesDeaths_UK.dta", clear
+
+  merge 1:1 date_td using  "${ProcessedData}/Vaccinations_UK_constructed.dta", gen(MergeVaccines)
 
 
+  * Date
+  * Number of weeks since vaccine approved in the country
+  * Number of 1st doses given in that day
+  * Number of 2nd doses given in that day
+  * Number of confirmed cases on that day
+  * Number of confirmed deaths on that day
+
+  rename  location country
+  rename  date     date_str
+
+  lab var country         "Country"
+  lab var date_td         "Date"
+  lab var new_cases       "Daily new cases"
+  lab var new_deaths      "Daily new deaths"
+  lab var first_dose      "Number of 1st doses"
+  lab var second_dose     "Number of 1st doses"
+  lab var apprvl_vaccine  "Approval of 1st vaccine"
+  lab var days_apprvl     "Days since approval of first vaccine"
+
+  * Then R values added
 
 
+  * keep only those variables that are needed:
+  local  VarList = "country date_td new_cases new_deaths first_dose second_dose apprvl_vaccine days_apprvl"
+  order `VarList'
+  keep  `VarList'
 
 
-
-
-
-
-
+  save  "${FinalData}/CovidData_UK_final.dta", replace
+  export delimited "${FinalData}/CovidData_UK_final.csv", replace
 
 
 
