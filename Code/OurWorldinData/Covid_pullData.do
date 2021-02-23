@@ -1,4 +1,6 @@
 
+*** Pull covid data for the US and UK
+
 
 ** Daily reported cases and vaccinations from the US
 
@@ -28,6 +30,9 @@
 
 
 
+  save "${ProcessedData}/DailyCases_US_UK.dta", replace
+save "${ProcessedData}/Vaccinations_UK.dta", replace
+  save "${ProcessedData}/Vaccinations_US.dta", replace
 
 
 
