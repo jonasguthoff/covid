@@ -45,7 +45,7 @@
   gen     days_apprvl    = date_td - apprvl_vaccine
 
 
-  local  KeepVars = "location date date_td first_dose second_dose "
+  local  KeepVars = "location date date_td first_dose second_dose people_vaccinated people_fully_vaccinated "
   order `KeepVars'
   keep  `KeepVars'
 
@@ -116,7 +116,7 @@
 
 
   * keep only those variables that are needed:
-  local  VarList  = "country date_td new_cases new_deaths first_dose second_dose apprvl_vaccine days_apprvl"
+  local  VarList  = "country date_td new_cases new_deaths people_vaccinated people_fully_vaccinated  first_dose second_dose apprvl_vaccine days_apprvl"
   local  RNumVars = "rNumbertype r_median r_mean r_sd r_lower_90 r_lower_50 r_lower_20 r_upper_20 r_upper_50 r_upper_90"
   order `VarList' `RNumVars'
   keep  `VarList' `RNumVars'
@@ -169,7 +169,7 @@
   format  first_dose %12.0g
 
 
-  local   KeepVars = "location date date_td first_dose second_dose "
+  local   KeepVars = "location date date_td first_dose second_dose people_vaccinated people_fully_vaccinated "
   order  `KeepVars'
   keep   `KeepVars'
 
@@ -235,8 +235,9 @@
   lab var r_sd            "R sd"
 
 
+
   * keep only those variables that are needed:
-  local  VarList  = "country date_td new_cases new_deaths first_dose second_dose apprvl_vaccine days_apprvl"
+  local  VarList  = "country date_td new_cases new_deaths people_vaccinated people_fully_vaccinated first_dose second_dose apprvl_vaccine days_apprvl"
   local  RNumVars = "rNumbertype r_median r_mean r_sd r_lower_90 r_lower_50 r_lower_20 r_upper_20 r_upper_50 r_upper_90"
   order `VarList' `RNumVars'
   keep  `VarList' `RNumVars'
