@@ -19,9 +19,6 @@
 
 
 
-
-
-
   * Vaccinations
   use  "${ProcessedData}/Vaccinations_US.dta", clear
 
@@ -30,12 +27,15 @@
 
   * total_vaccinations      = received first OR second dose
   * people_fully_vaccinated = received second dose
-
   gen     second_dose = .
   replace second_dose = people_fully_vaccinated[_n]  - people_fully_vaccinated[_n-1]
 
+  * construct the first doses:
+  gen     doses       = .
+  replace doses       = people_vaccinated[_n]  - people_vaccinated[_n-1]
+
   gen     first_dose  = .
-  replace first_dose  = total_vaccinations - second_dose
+  replace first_dose  = doses - second_dose
   format  first_dose %12.0g
 
   * generate days since approval of the first vaccine:
@@ -45,7 +45,7 @@
   gen     days_apprvl    = date_td - apprvl_vaccine
 
 
-  local  KeepVars = "location date date_td first_dose second_dose apprvl_vaccine days_apprvl"
+  local  KeepVars = "location date date_td first_dose second_dose "
   order `KeepVars'
   keep  `KeepVars'
 
@@ -68,6 +68,25 @@
 
   drop if location == "United Kingdom"
 
+
+  * generate days since approval of the first vaccine:
+  * br
+
+  gen     apprvl_vaccine = td(11dec2020)
+  format  apprvl_vaccine %td
+
+  gen     days_apprvl    = date_td - apprvl_vaccine
+
+  * replace the negative values with missings:
+  replace apprvl_vaccine =.        if days_apprvl <0
+  replace days_apprvl    =.        if days_apprvl <0
+
+
+  * rename the R number variables:
+  foreach var in median mean sd lower_90 lower_50 lower_20 upper_20 upper_50 upper_90 {
+    rename `var' r_`var'
+    }
+
   * Date
   * Number of weeks since vaccine approved in the country
   * Number of 1st doses given in that day
@@ -78,22 +97,29 @@
   rename  location country
   rename  date     date_str
 
-  lab var country         "Country"
-  lab var date_td         "Date"
-  lab var new_cases       "Daily new cases"
-  lab var new_deaths      "Daily new deaths"
-  lab var first_dose      "Number of 1st doses"
-  lab var second_dose     "Number of 1st doses"
-  lab var apprvl_vaccine  "Approval of 1st vaccine"
-  lab var days_apprvl     "Days since approval of first vaccine"
+  lab var country                  "Country"
+  lab var date_td                  "Date"
+  lab var new_cases                "Daily new cases"
+  lab var new_deaths               "Daily new deaths"
+  lab var people_fully_vaccinated  "People receiving 2nd dose"
+  lab var people_vaccinated        "People vaccinated"
+  lab var first_dose               "Number of 1st doses"
+  lab var second_dose              "Number of 1st doses"
+  lab var apprvl_vaccine           "Approval of 1st vaccine"
+  lab var days_apprvl              "Days since approval of first vaccine"
 
   * Then R values added
+  lab var rNumbertype     "R number type"
+  lab var r_median        "R median"
+  lab var r_mean          "R mean"
+  lab var r_sd            "R sd"
 
 
   * keep only those variables that are needed:
-  local  VarList = "country date_td new_cases new_deaths first_dose second_dose apprvl_vaccine days_apprvl"
-  order `VarList'
-  keep  `VarList'
+  local  VarList  = "country date_td new_cases new_deaths first_dose second_dose apprvl_vaccine days_apprvl"
+  local  RNumVars = "rNumbertype r_median r_mean r_sd r_lower_90 r_lower_50 r_lower_20 r_upper_20 r_upper_50 r_upper_90"
+  order `VarList' `RNumVars'
+  keep  `VarList' `RNumVars'
 
 
   save  "${FinalData}/CovidData_US_final.dta", replace
@@ -134,18 +160,16 @@
   gen     second_dose = .
   replace second_dose = people_fully_vaccinated[_n]  - people_fully_vaccinated[_n-1]
 
+  * construct the first doses:
+  gen     doses       = .
+  replace doses       = people_vaccinated[_n]  - people_vaccinated[_n-1]
+
   gen     first_dose  = .
-  replace first_dose  = total_vaccinations - second_dose
+  replace first_dose  = doses - second_dose
   format  first_dose %12.0g
 
-  * generate days since approval of the first vaccine:
-  gen     apprvl_vaccine = td(02dec2020)
-  format  apprvl_vaccine %td
 
-  gen     days_apprvl    = date_td - apprvl_vaccine
-
-
-  local   KeepVars = "location date date_td first_dose second_dose apprvl_vaccine days_apprvl"
+  local   KeepVars = "location date date_td first_dose second_dose "
   order  `KeepVars'
   keep   `KeepVars'
 
@@ -166,6 +190,23 @@
 
   drop if location == "United States"
 
+  * generate days since approval of the first vaccine:
+  *br
+
+  gen     apprvl_vaccine = td(02dec2020)
+  format  apprvl_vaccine %td
+
+  gen     days_apprvl    = date_td - apprvl_vaccine
+
+  * replace the negative values with missings:
+  replace apprvl_vaccine =.        if days_apprvl <0
+  replace days_apprvl    =.        if days_apprvl <0
+
+  * rename the R number variables:
+  foreach var in median mean sd lower_90 lower_50 lower_20 upper_20 upper_50 upper_90 {
+    rename `var' r_`var'
+    }
+
   * Date
   * Number of weeks since vaccine approved in the country
   * Number of 1st doses given in that day
@@ -176,22 +217,29 @@
   rename  location country
   rename  date     date_str
 
-  lab var country         "Country"
-  lab var date_td         "Date"
-  lab var new_cases       "Daily new cases"
-  lab var new_deaths      "Daily new deaths"
-  lab var first_dose      "Number of 1st doses"
-  lab var second_dose     "Number of 1st doses"
-  lab var apprvl_vaccine  "Approval of 1st vaccine"
-  lab var days_apprvl     "Days since approval of first vaccine"
+  lab var country                  "Country"
+  lab var date_td                  "Date"
+  lab var new_cases                "Daily new cases"
+  lab var new_deaths               "Daily new deaths"
+  lab var people_fully_vaccinated  "People receiving 2nd dose"
+  lab var people_vaccinated        "People vaccinated"
+  lab var first_dose               "Number of 1st doses"
+  lab var second_dose              "Number of 1st doses"
+  lab var apprvl_vaccine           "Approval of 1st vaccine"
+  lab var days_apprvl              "Days since approval of first vaccine"
 
   * Then R values added
+  lab var rNumbertype     "R number type"
+  lab var r_median        "R median"
+  lab var r_mean          "R mean"
+  lab var r_sd            "R sd"
 
 
   * keep only those variables that are needed:
-  local  VarList = "country date_td new_cases new_deaths first_dose second_dose apprvl_vaccine days_apprvl"
-  order `VarList'
-  keep  `VarList'
+  local  VarList  = "country date_td new_cases new_deaths first_dose second_dose apprvl_vaccine days_apprvl"
+  local  RNumVars = "rNumbertype r_median r_mean r_sd r_lower_90 r_lower_50 r_lower_20 r_upper_20 r_upper_50 r_upper_90"
+  order `VarList' `RNumVars'
+  keep  `VarList' `RNumVars'
 
 
   save  "${FinalData}/CovidData_UK_final.dta", replace
